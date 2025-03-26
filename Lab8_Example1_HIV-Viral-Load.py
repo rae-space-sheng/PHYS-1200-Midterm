@@ -70,24 +70,24 @@ time = np.arange(0, 10.1, 0.1)
 # viral_load = A * np.exp(alpha * time) + B * np.exp(-1 * beta * time)
 
 # Set variables and calculate, 1
-A = 2
-alpha = 1.1
+A = 5
+alpha = 1
 B = 0.0
 beta = 1
 viral_load_1 = A * np.exp(alpha * time) + B * np.exp(-1 * beta * time)
 
 # Set variables and calculate, 2
-A = 3
-alpha = 1
-B = 3
-beta = 0.1
+A = 10
+alpha = 0.8
+B = 100000
+beta = 1
 viral_load_2 = A * np.exp(alpha * time) + B * np.exp(-1 * beta * time)
 
 # Set variables and calculate, 3
 A = 5
-alpha = 0.8
-B = 3
-beta = 0.4
+alpha = 0.2
+B = 170000
+beta = 0.5
 viral_load_3 = A * np.exp(alpha * time) + B * np.exp(-1 * beta * time)
 
 # Use plots to plot all 4 V(t) graphs on the same graph / set of axes.
@@ -96,11 +96,14 @@ plt.plot(time, viral_load_2, color = 'g', label = '2')
 plt.plot(time, viral_load_3, color = 'b', label = '3')
 
 # Plot experimental data
-plt.plot(data_set, color = 'y')
+data_time = data_set[:, 0]
+data_points = data_set[:, 1]
+# plt.plot(data_set, color = 'y')
+plt.scatter(data_time, data_points)
 
 plt.xlabel("Time elapsed (seconds)")
 plt.ylabel("Viral load (virions in blood after drug)")
-plt.title("Time elapsed vs. viral load")
+plt.title("Time elapsed vs. viral load (see axes for details)")
 
 plt.legend()
 plt.show()
